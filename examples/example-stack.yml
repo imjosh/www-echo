@@ -5,6 +5,7 @@ services:
   foo-server:
     environment:
       - 'HELLO_PAYLOAD={ "serverType": "foo" }'
+      - HELLO_PORT=8000
     image: 'imj0sh/www-hello:latest'
     networks:
       - proxy
@@ -19,6 +20,7 @@ services:
   bar-server:
     environment:
       - 'HELLO_PAYLOAD={ "serverType": "bar" }'
+      - HELLO_PORT=8000
     image: 'imj0sh/www-hello:latest'
     networks:
       - proxy
