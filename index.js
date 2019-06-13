@@ -6,8 +6,8 @@
 const app = require('express')();
 
 const env = process.env;
-const port = env.ECHO_PORT || 8000;
-const tempPayload = (env.ECHO_PAYLOAD || '');
+const port = env.HELLO_PORT || 8000;
+const tempPayload = (env.HELLO_PAYLOAD || '');
 const instance = getRandomInt().toString();
 
 let payload;
