@@ -1,1 +1,35 @@
-# TODO
+# based on https://github.com/BretFisher/dogvscat/blob/master/stack-voting.yml
+
+version: "3.6"
+services:
+  foo-server:
+    environment:
+      - 'HELLO_PAYLOAD={ "serverType": "foo" }'
+    image: 'imj0sh/www-hello:latest'
+    networks:
+      - proxy
+    deploy:
+      restart_policy:
+        condition: any
+      labels:
+        - traefik.port=8000 # whatever port the server container exposes
+        - traefik.frontend.rule=Host:foo.example.com
+      replicas: 3
+
+  bar-server:
+    environment:
+      - 'HELLO_PAYLOAD={ "serverType": "bar" }'
+    image: 'imj0sh/www-hello:latest'
+    networks:
+      - proxy
+    deploy:
+      restart_policy:
+        condition: any
+      labels:
+        - traefik.port=8000
+        - traefik.frontend.rule=Host:bar.example.com
+      replicas: 3
+
+networks:
+  proxy:
+    external: true
