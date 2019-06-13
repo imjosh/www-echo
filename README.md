@@ -8,3 +8,4 @@
 - The server will add a random number to the specified payload so you can distinguish responses from multiple instances of the same service
 - Any request to the server (GET/POST/etc) will send the payload back as JSON with the instance number included
 - The `examples` directory includes two stacks for a Docker swarm node which together implement DNS routing (and optionally SSL with LetsEncrypt) using Traefik (many thanks to Docker guru [Bret Fisher](https://github.com/BretFisher/))
+- [Docker Hub repo](https://cloud.docker.com/repository/docker/imj0sh/www-hello)
