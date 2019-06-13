@@ -3,15 +3,26 @@
  * 
  */
 
-const express = require('express')
-const app = express()
+const app = require('express')();
 
-const env = process.env
-const port = env.ECHO_PORT || 8000
-const payload = env.ECHO_PAYLOAD || getRandomInt().toString();
+const env = process.env;
+const port = env.ECHO_PORT || 8000;
+const tempPayload = (env.ECHO_PAYLOAD || '');
+const instance = getRandomInt().toString();
+
+let payload;
+try {
+  payload = JSON.parse(tempPayload);
+  payload.instance = instance;
+} catch (error) {
+  payload = {
+    payload,
+    instance
+  };
+}
 
 app.all('*', (req, res) => {
-  res.send(payload)
+  res.send(payload);
 })
 
 app.listen(port, err => {
