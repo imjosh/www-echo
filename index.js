@@ -16,7 +16,7 @@ try {
   payload.instance = instance;
 } catch (error) {
   payload = {
-    payload,
+    payload: tempPayload,
     instance
   };
 }
