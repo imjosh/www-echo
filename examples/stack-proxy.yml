@@ -23,7 +23,11 @@ services:
       - --docker.network=proxy
       - --docker.watch
       - --api
+      ## entrypoints
       - --defaultentrypoints=http,https
+      # - --entryPoints=Name:http Address::80 ## don't force HTTPS
+      # - --entryPoints=Name:http Address::80 Redirect.EntryPoint:https  ## force HTTPS
+      # - --entryPoints=Name:https Address::443 TLS
       ## optional letsEncrypt settings
       # - --acme
       # - --acme.email=acme@example.com
@@ -31,8 +35,6 @@ services:
       # - --acme.httpchallenge.entrypoint=http
       # - --acme.onhostrule=true
       # - --acme.entrypoint=https
-      # - --entryPoints=Name:https Address::443 TLS
-      # - --entryPoints=Name:http Address::80
       # - --acme.storage=/etc/traefik/acme/acme.json
       # - --acme.acmelogging
       # - --acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
